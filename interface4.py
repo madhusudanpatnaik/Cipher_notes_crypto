@@ -85,6 +85,8 @@ decode_btn = Button(
 
 def create_function():
     import interface3
+    
+    
 
 
 def decode_function():
@@ -115,21 +117,23 @@ def encode_function():
     filename4 = file_name5 + ".txt"
     print(filename4)
     key = Fernet.generate_key()
-    # write the key in a file of .key extension
+       # write the key in a file of .key extension
     with open('file_key.key', 'wb') as filekey:
-        filekey.write(key)
+            filekey.write(key)
         # crate instance of Fernet
         # and load generated key
     fernet = Fernet(key)
-    # read the file to encrypt
+        # read the file to encrypt
     with open(filename4, 'rb') as f:
-        file = f.read()
+            file = f.read()
     # encrypt the file
     encrypt_file = fernet.encrypt(file)
     # open the file and wite the encryption data
     with open(filename4, 'wb') as encrypted_file:
         encrypted_file.write(encrypt_file)
     print('File is encrypted')
+
+
 
 
 register_name.grid(row=0, column=1, pady=10, padx=30)

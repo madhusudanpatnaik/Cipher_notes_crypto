@@ -21,7 +21,7 @@ password_var2 = StringVar()
 
 f = ('Times', 14)
 var = StringVar()
-var.set('male')
+#var.set('')
 name_var1 = ""
 password_var1 = ""
 
@@ -86,17 +86,19 @@ def callback_function():
     ws.destroy()
     import credsavig as cred
     cred.main()
+    callback_function2(name_var2, password_var2)
 
 
 def callback_function2(name_var2, password_var2):
     name2 = name_var2.get()
     password_var2 = password_var2.get()
     if (name2 == user and password_var2 == passwd):
-        print("useername")
+        print("login sucessfully")
+        ws.destroy()
+        import home_page
     else:
         print("login not wokring")
 
-    print("login")
     #do something
 
 

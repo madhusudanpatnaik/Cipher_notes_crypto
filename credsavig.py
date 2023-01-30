@@ -1,11 +1,18 @@
 #CreateCred.py
 #Creates a credential file.
+from atexit import register
+from fileinput import close
+from typing import get_args
 from cryptography.fernet import Fernet
 import re
 import ctypes
 import time
 import os
 import sys
+
+import register_user
+
+
 
 
 class Credentials():
@@ -42,14 +49,7 @@ class Credentials():
 		self.__password = f.encrypt(password.encode()).decode()
 		del f
 
-	@property
-	def expiry_time(self):
-		return self.__time_of_exp
-
-	@expiry_time.setter
-	def expiry_time(self, exp_time):
-		if(exp_time >= 2):
-			self.__time_of_exp = exp_time
+	
 
 	def create_cred(self):
 		"""
@@ -100,25 +100,18 @@ def main():
 
 	# Creating an object for Credentials class
 	creds = Credentials()
-
 	#Accepting credentials
-	creds.username = input("Enter UserName:")
-	creds.password = input("Enter Password:")
-	print(
-		"Enter the epiry time for key file in minutes, [default:Will never expire]")
-	creds.expiry_time = int(input("Enter time:") or '-1')
-
+	creds.username,creds.password = register_user.name1,register_user.password1
 	#calling the Credit
 	creds.create_cred()
-	print("**"*20)
-	print("Cred file created successfully at {}"
-            .format(time.ctime()))
+import interface
+print("Cred file created successfully at {}".format(time.ctime()))
 
-	if not(creds.expiry_time == -1):
-		os.startfile('expire.py')
 
-	print("**"*20)
+	
+
 
 
 if __name__ == "__main__":
 	main()
+	
