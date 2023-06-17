@@ -14,3 +14,5 @@ while reading or writing the data. In our proposed approach, we are using OpenCV
 registered user and Fernet symmetric encryption algorithm for encrypting the data and tkinker for GUI.
 
 <h2>KEY WORDS: Confidentiality, OpenCV, tkinker, Fernet.</h2>
+
+<h1>Run the Setup file to install required packages and Execute the Homepage.py python file</h1>
